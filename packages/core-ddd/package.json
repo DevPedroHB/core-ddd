@@ -1,0 +1,37 @@
+{
+	"author": {
+		"email": "pedroh.bergamo20@gmail.com",
+		"name": "Pedro Henrique Bérgamo",
+		"url": "https://github.com/DevPedroHB"
+	},
+	"description": "Core DDD is a library for building Domain Driven Design in TypeScript.",
+	"devDependencies": {
+		"@jest/globals": "^29.7.0",
+		"@pedrohb/typescript-config": "workspace:*",
+		"@types/jest": "^29.5.14",
+		"@types/node": "^22.13.11",
+		"jest": "^29.7.0",
+		"ts-jest": "^29.2.6",
+		"ts-node": "^10.9.2",
+		"tsup": "^8.4.0",
+		"tsx": "^4.19.3",
+		"typescript": "5.8.2"
+	},
+	"keywords": [
+		"DDD",
+		"Domain Driven Design",
+		"Clean Architecture"
+	],
+	"license": "MIT",
+	"main": "src/index.ts",
+	"name": "@pedrohb/core-ddd",
+	"packageManager": "pnpm@10.6.5",
+	"scripts": {
+		"build": "tsup-node",
+		"test": "jest",
+		"test:cov": "jest --coverage",
+		"test:watch": "jest --watch"
+	},
+	"types": "src/index.ts",
+	"version": "1.0.0"
+}

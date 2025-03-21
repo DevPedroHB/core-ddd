@@ -1,5 +1,13 @@
 {
 	"name": "@pedrohb/turbo",
+	"license": "MIT",
+	"author": {
+		"name": "Pedro Henrique Bérgamo",
+		"email": "pedroh.bergamo20@gmail.com",
+		"url": "https://github.com/DevPedroHB"
+	},
+	"description": "Turbo monorepo for Core DDD",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"build": "turbo run build",
