@@ -7,7 +7,7 @@ import {
 import type { TestRepository } from "@tests/repositories/test-repository";
 import { injectable } from "inversify";
 
-export function makeUser(
+export function makeTest(
 	props: Partial<ITestAggregateRoot> = {},
 	id?: UniqueEntityId,
 ) {
@@ -30,11 +30,11 @@ export function makeUser(
 }
 
 @injectable()
-export class UserFactory {
+export class TestFactory {
 	constructor(private readonly testRepository: TestRepository) {}
 
-	async makeUser(props: Partial<ITestAggregateRoot> = {}, id?: UniqueEntityId) {
-		const testAggregateRoot = makeUser(props, id);
+	async makeTest(props: Partial<ITestAggregateRoot> = {}, id?: UniqueEntityId) {
+		const testAggregateRoot = makeTest(props, id);
 
 		await this.testRepository.create(testAggregateRoot);
 

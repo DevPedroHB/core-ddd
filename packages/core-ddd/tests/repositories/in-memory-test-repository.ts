@@ -12,11 +12,9 @@ import type { TestAggregateRootType, TestRepository } from "./test-repository";
 export class InMemoryTestRepository implements TestRepository {
 	public items: TestAggregateRoot[] = [];
 
-	async fetchAll({
-		fields,
-		orderBy,
-		pagination,
-	}: FetchAllOptions<TestAggregateRootType>) {
+	async fetchAll(options?: FetchAllOptions<TestAggregateRootType>) {
+		const { fields, orderBy, pagination } = options || {};
+
 		let testAggregateRoot = this.items;
 
 		if (fields) {
@@ -34,9 +32,7 @@ export class InMemoryTestRepository implements TestRepository {
 		return testAggregateRoot;
 	}
 
-	async findByFields(
-		fields: FindByFields<TestAggregateRootType>,
-	): Promise<TestAggregateRoot | null> {
+	async findByFields(fields: FindByFields<TestAggregateRootType>) {
 		const filteredItems = filterItemsByFields(this.items, fields);
 
 		if (filteredItems.length === 0) {
@@ -46,13 +42,13 @@ export class InMemoryTestRepository implements TestRepository {
 		return filteredItems[0];
 	}
 
-	async create(entity: TestAggregateRoot): Promise<void> {
+	async create(entity: TestAggregateRoot) {
 		this.items.push(entity);
 
 		DomainEvents.dispatchEventsForAggregate(entity.id);
 	}
 
-	async update(entity: TestAggregateRoot): Promise<void> {
+	async update(entity: TestAggregateRoot) {
 		const index = this.items.findIndex((item) => item.id.equals(entity.id));
 
 		if (index === -1) {
@@ -64,7 +60,7 @@ export class InMemoryTestRepository implements TestRepository {
 		DomainEvents.dispatchEventsForAggregate(entity.id);
 	}
 
-	async delete(entity: TestAggregateRoot): Promise<void> {
+	async delete(entity: TestAggregateRoot) {
 		const index = this.items.findIndex((item) => item.id.equals(entity.id));
 
 		if (index === -1) {
@@ -76,7 +72,7 @@ export class InMemoryTestRepository implements TestRepository {
 		DomainEvents.dispatchEventsForAggregate(entity.id);
 	}
 
-	async findByName(name: string): Promise<TestAggregateRoot | null> {
+	async findByName(name: string) {
 		const filteredItems = filterItemsByFields(this.items, {
 			name,
 		});

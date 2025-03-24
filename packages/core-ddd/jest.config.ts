@@ -7,6 +7,10 @@ const config: Config = {
 	collectCoverageFrom: ["**/*.(t|j)s"],
 	coverageDirectory: "./coverage",
 	moduleFileExtensions: ["js", "json", "ts"],
+	moduleNameMapper: {
+		"^@/(.*)$": "<rootDir>/src/$1",
+		"^@tests/(.*)$": "<rootDir>/tests/$1",
+	},
 	rootDir: ".",
 	testEnvironment: "node",
 	testRegex: ".*\\.spec\\.ts$",
