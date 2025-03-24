@@ -2,6 +2,12 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"_version": "23.0.0",
 	"extends": "@pedrohb/typescript-config/library.json",
+	"compilerOptions": {
+		"paths": {
+			"@/*": ["./src/*"],
+			"@tests/*": ["./tests/*"]
+		}
+	},
 	"include": ["**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules", "dist"]
 }
