@@ -5,10 +5,8 @@ import { sortItems } from "@/functions/sort-items";
 import type { FetchAllOptions } from "@/types/fetch-all-options";
 import type { FindByFields } from "@/types/find-by-fields";
 import type { TestAggregateRoot } from "@tests/entities/test-aggregate-root";
-import { injectable } from "inversify";
 import type { TestAggregateRootType, TestRepository } from "./test-repository";
 
-@injectable()
 export class InMemoryTestRepository implements TestRepository {
 	public items: TestAggregateRoot[] = [];
 

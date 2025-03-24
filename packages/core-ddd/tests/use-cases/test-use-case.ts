@@ -6,7 +6,6 @@ import {
 	TestAggregateRoot,
 } from "@tests/entities/test-aggregate-root";
 import type { TestRepository } from "@tests/repositories/test-repository";
-import { injectable } from "inversify";
 
 export type TestUseCaseRequest = Pick<
 	ITestAggregateRoot,
@@ -20,7 +19,6 @@ export type TestUseCaseResponse = Either<
 	}
 >;
 
-@injectable()
 export class TestUseCase
 	implements UseCase<TestUseCaseRequest, TestUseCaseResponse>
 {
@@ -42,6 +40,8 @@ export class TestUseCase
 			email,
 			password,
 		});
+
+		await this.testRepository.create(test);
 
 		return success({
 			test,

@@ -5,7 +5,6 @@ import {
 	TestAggregateRoot,
 } from "@tests/entities/test-aggregate-root";
 import type { TestRepository } from "@tests/repositories/test-repository";
-import { injectable } from "inversify";
 
 export function makeTest(
 	props: Partial<ITestAggregateRoot> = {},
@@ -29,7 +28,6 @@ export function makeTest(
 	return testAggregateRoot;
 }
 
-@injectable()
 export class TestFactory {
 	constructor(private readonly testRepository: TestRepository) {}
 
