@@ -1,0 +1,11 @@
+{
+	"github.copilot.chat.followUps": "always",
+	"github.copilot.chat.localeOverride": "pt-br",
+	"github.copilot.chat.generateTests.codeLens": true,
+	"github.copilot.chat.search.semanticTextResults": true,
+	"github.copilot.chat.temporalContext.enabled": true,
+	"github.copilot.chat.completionContext.typescript.mode": "on",
+	"githubPullRequests.experimental.useQuickChat": true,
+	"githubPullRequests.experimental.notificationsView": true,
+	"editor.defaultFormatter": "biomejs.biome"
+}

@@ -21,10 +21,6 @@ importers:
   config/typescript-config: {}
 
   packages/core-ddd:
-    dependencies:
-      inversify:
-        specifier: ^7.2.0
-        version: 7.2.0(reflect-metadata@0.2.2)
     devDependencies:
       '@faker-js/faker':
         specifier: ^9.6.0
@@ -440,25 +436,6 @@ packages:
   '@faker-js/faker@9.6.0':
     resolution: {integrity: sha512-3vm4by+B5lvsFPSyep3ELWmZfE3kicDtmemVpuwl1yH7tqtnHdsA6hG8fbXedMVdkzgtvzWoRgjSB4Q+FHnZiw==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
-
-  '@inversifyjs/common@1.5.0':
-    resolution: {integrity: sha512-Qj5BELk11AfI2rgZEAaLPmOftmQRLLmoCXgAjmaF0IngQN5vHomVT5ML7DZ3+CA5fgGcEVMcGbUDAun+Rz+oNg==}
-
-  '@inversifyjs/container@1.6.0':
-    resolution: {integrity: sha512-dntAu6TJRmTJl8+VXksBmvpfNtXQAEG6DkcdwOyv6xIr4ASdMdG2+14XKY5xUX8luk3CDCnK0j5XM8uxROfWuw==}
-    peerDependencies:
-      reflect-metadata: ~0.2.2
-
-  '@inversifyjs/core@5.1.0':
-    resolution: {integrity: sha512-mxawKEUmRAwQeNGymf2WucPNEnyWnaGMTi2cOyIq9/zqMbo8LpXh8OFkGvJciFWznC6fDnP27O80u+sY/JjU9g==}
-
-  '@inversifyjs/prototype-utils@0.1.0':
-    resolution: {integrity: sha512-lNz1yyajMRDXBHLvJsYYX81FcmeD15e5Qz1zAZ/3zeYTl+u7ZF/GxNRKJzNOloeMPMtuR8BnvzHA1SZxjR+J9w==}
-
-  '@inversifyjs/reflect-metadata-utils@1.1.0':
-    resolution: {integrity: sha512-jmuAuC3eL1GnFAYfJGJOMKRDL9q1mgzOyrban6zxfM8Yg1FUHsj25h27bW2G7p8X1Amvhg3MLkaOuogszkrofA==}
-    peerDependencies:
-      reflect-metadata: 0.2.2
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -1138,11 +1115,6 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
-  inversify@7.2.0:
-    resolution: {integrity: sha512-zPXKp7ybicPsrhlNZaJscZ9yeg0DZtnCGuNfMpMsso9Jx1tNepSS2CqPrrP8Pc75nH/5d/qB2rYKiv1BEI1gFQ==}
-    peerDependencies:
-      reflect-metadata: ~0.2.2
-
   is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
 
@@ -1598,9 +1570,6 @@ packages:
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
-
-  reflect-metadata@0.2.2:
-    resolution: {integrity: sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==}
 
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -2262,31 +2231,6 @@ snapshots:
     optional: true
 
   '@faker-js/faker@9.6.0': {}
-
-  '@inversifyjs/common@1.5.0': {}
-
-  '@inversifyjs/container@1.6.0(reflect-metadata@0.2.2)':
-    dependencies:
-      '@inversifyjs/common': 1.5.0
-      '@inversifyjs/core': 5.1.0(reflect-metadata@0.2.2)
-      '@inversifyjs/reflect-metadata-utils': 1.1.0(reflect-metadata@0.2.2)
-      reflect-metadata: 0.2.2
-
-  '@inversifyjs/core@5.1.0(reflect-metadata@0.2.2)':
-    dependencies:
-      '@inversifyjs/common': 1.5.0
-      '@inversifyjs/prototype-utils': 0.1.0
-      '@inversifyjs/reflect-metadata-utils': 1.1.0(reflect-metadata@0.2.2)
-    transitivePeerDependencies:
-      - reflect-metadata
-
-  '@inversifyjs/prototype-utils@0.1.0':
-    dependencies:
-      '@inversifyjs/common': 1.5.0
-
-  '@inversifyjs/reflect-metadata-utils@1.1.0(reflect-metadata@0.2.2)':
-    dependencies:
-      reflect-metadata: 0.2.2
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -3039,13 +2983,6 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  inversify@7.2.0(reflect-metadata@0.2.2):
-    dependencies:
-      '@inversifyjs/common': 1.5.0
-      '@inversifyjs/container': 1.6.0(reflect-metadata@0.2.2)
-      '@inversifyjs/core': 5.1.0(reflect-metadata@0.2.2)
-      reflect-metadata: 0.2.2
-
   is-arrayish@0.2.1: {}
 
   is-core-module@2.16.1:
@@ -3637,8 +3574,6 @@ snapshots:
   react-is@18.3.1: {}
 
   readdirp@4.1.2: {}
-
-  reflect-metadata@0.2.2: {}
 
   require-directory@2.1.1: {}
 

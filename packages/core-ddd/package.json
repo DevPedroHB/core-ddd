@@ -19,15 +19,24 @@
 		"tsx": "^4.19.3",
 		"typescript": "5.8.2"
 	},
+	"files": ["dist"],
 	"keywords": [
 		"DDD",
 		"Domain Driven Design",
-		"Clean Architecture"
+		"Clean Architecture",
+		"Typescript"
 	],
 	"license": "MIT",
-	"main": "src/index.ts",
+	"main": "dist/index.js",
 	"name": "@pedrohb/core-ddd",
 	"packageManager": "pnpm@10.6.5",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/DevPedroHB/core-ddd.git"
+	},
 	"scripts": {
 		"build": "pnpm run generate-barrels && tsup-node",
 		"generate-barrels": "barrelsby -c barrelsby.json",
@@ -35,9 +44,6 @@
 		"test:cov": "jest --coverage",
 		"test:watch": "jest --watch"
 	},
-	"types": "src/index.ts",
-	"version": "1.0.0",
-	"dependencies": {
-		"inversify": "^7.2.0"
-	}
+	"types": "dist/index.d.ts",
+	"version": "1.0.0"
 }
