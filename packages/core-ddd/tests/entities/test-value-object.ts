@@ -52,7 +52,7 @@ export class TestValueObject extends ValueObject<ITestValueObject> {
 		this.props.updatedAt = new Date();
 	}
 
-	static create(props: Optional<ITestValueObject, "createdAt">) {
+	public static create(props: Optional<ITestValueObject, "createdAt">) {
 		const testValueObject = new TestValueObject({
 			...props,
 			createdAt: props.createdAt ?? new Date(),

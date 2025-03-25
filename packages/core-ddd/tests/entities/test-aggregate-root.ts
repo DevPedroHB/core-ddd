@@ -58,7 +58,7 @@ export class TestAggregateRoot extends AggregateRoot<ITestAggregateRoot> {
 		this.addDomainEvent(new TestAggregateRootEvent(this));
 	}
 
-	static create(
+	public static create(
 		props: Optional<ITestAggregateRoot, "createdAt">,
 		id?: UniqueEntityId,
 	) {
