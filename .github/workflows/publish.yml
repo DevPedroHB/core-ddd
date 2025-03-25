@@ -21,15 +21,18 @@ jobs:
           node-version: '23'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Instalar pnpm
+        run: npm install -g pnpm
+
       - name: Instalar dependências
-        run: npm install
+        run: pnpm install
 
       - name: Build do package
-        run: npm run build
+        run: pnpm run build
 
       - name: Publicar no NPM
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd packages/core-ddd
-          npm publish --access public
+          pnpm publish --access public
