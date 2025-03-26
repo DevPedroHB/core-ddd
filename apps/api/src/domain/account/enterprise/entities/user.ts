@@ -4,10 +4,10 @@ import {
 	Optional,
 	UniqueEntityId,
 } from "@pedrohb/core-ddd";
-import { User as UserDatabase } from "@pedrohb/database";
+import { User as UserTypes } from "@pedrohb/types";
 import { UserCreatedEvent } from "../events/user-created-event";
 
-export interface IUser extends NullableToOptional<Omit<UserDatabase, "id">> {}
+export interface IUser extends NullableToOptional<Omit<UserTypes, "id">> {}
 
 export class User extends AggregateRoot<IUser> {
 	get name() {
