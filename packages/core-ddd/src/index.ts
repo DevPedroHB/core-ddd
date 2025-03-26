@@ -18,7 +18,7 @@ export * from "./interfaces/file-upload";
 export * from "./interfaces/pagination";
 export * from "./interfaces/use-case-error";
 export * from "./repositories/repository";
-export * from "./types/entity-type-with-id";
+export * from "./types/entity-with-id";
 export * from "./types/fetch-all-options";
 export * from "./types/find-by-fields";
 export * from "./types/nullable-to-optional";

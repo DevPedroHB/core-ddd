@@ -1,9 +1,7 @@
-import { EntityTypeWithId, Repository } from "@pedrohb/core-ddd";
-import { IUser, User } from "../../enterprise/entities/user";
+import { Repository } from "@pedrohb/core-ddd";
+import { User as UserTypes } from "@pedrohb/types";
+import { User } from "../../enterprise/entities/user";
 
-export type UserRepositoryType = EntityTypeWithId<IUser>;
+export type UserFields = UserTypes;
 
-export abstract class UserRepository extends Repository<
-	UserRepositoryType,
-	User
-> {}
+export abstract class UserRepository extends Repository<UserFields, User> {}

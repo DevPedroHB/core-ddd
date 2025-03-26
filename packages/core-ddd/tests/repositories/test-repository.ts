@@ -1,14 +1,14 @@
 import { Repository } from "@/repositories/repository";
-import type { EntityTypeWithId } from "@/types/entity-type-with-id";
-import type {
+import { EntityWithId } from "@/types/entity-with-id";
+import {
 	ITestAggregateRoot,
 	TestAggregateRoot,
 } from "@tests/entities/test-aggregate-root";
 
-export type TestAggregateRootType = EntityTypeWithId<ITestAggregateRoot>;
+export type TestAggregateRootFields = EntityWithId<ITestAggregateRoot>;
 
 export abstract class TestRepository extends Repository<
-	TestAggregateRootType,
+	TestAggregateRootFields,
 	TestAggregateRoot
 > {
 	abstract findByName(name: string): Promise<TestAggregateRoot | null>;

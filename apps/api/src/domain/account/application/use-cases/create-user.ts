@@ -38,7 +38,7 @@ export class CreateUserUseCase
 		const userWithSameEmail = await this.userRepository.findByFields({ email });
 
 		if (userWithSameEmail) {
-			return error(new AlreadyExistsError("Usuário"));
+			return error(new AlreadyExistsError("O usuário"));
 		}
 
 		const hashedPassword = await this.hasher.hash(password);

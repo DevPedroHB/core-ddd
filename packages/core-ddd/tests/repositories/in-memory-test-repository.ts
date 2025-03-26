@@ -5,12 +5,15 @@ import { sortItems } from "@/functions/sort-items";
 import type { FetchAllOptions } from "@/types/fetch-all-options";
 import type { FindByFields } from "@/types/find-by-fields";
 import type { TestAggregateRoot } from "@tests/entities/test-aggregate-root";
-import type { TestAggregateRootType, TestRepository } from "./test-repository";
+import type {
+	TestAggregateRootFields,
+	TestRepository,
+} from "./test-repository";
 
 export class InMemoryTestRepository implements TestRepository {
 	public items: TestAggregateRoot[] = [];
 
-	async fetchAll(options?: FetchAllOptions<TestAggregateRootType>) {
+	async fetchAll(options?: FetchAllOptions<TestAggregateRootFields>) {
 		const { fields, orderBy, pagination } = options || {};
 
 		let testAggregateRoot = this.items;
@@ -30,7 +33,7 @@ export class InMemoryTestRepository implements TestRepository {
 		return testAggregateRoot;
 	}
 
-	async findByFields(fields: FindByFields<TestAggregateRootType>) {
+	async findByFields(fields: FindByFields<TestAggregateRootFields>) {
 		const filteredItems = filterItemsByFields(this.items, fields);
 
 		if (filteredItems.length === 0) {
