@@ -4,8 +4,7 @@
 	"extends": "@pedrohb/typescript-config/library.json",
 	"compilerOptions": {
 		"paths": {
-			"@/*": ["./src/*"],
-			"@prisma/*": ["./prisma/*"]
+			"@/*": ["./src/*"]
 		}
 	},
 	"include": ["**/*.ts", "**/*.tsx"],

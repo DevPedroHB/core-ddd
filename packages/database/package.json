@@ -1,5 +1,8 @@
 {
 	"author": "Pedro Henrique Bérgamo",
+	"dependencies": {
+		"@prisma/client": "6.5.0"
+	},
 	"devDependencies": {
 		"@pedrohb/typescript-config": "workspace:*",
 		"@types/node": "^22.13.11",
@@ -9,24 +12,17 @@
 		"tsx": "^4.19.3",
 		"typescript": "5.8.2"
 	},
-	"keywords": [
-		"database",
-		"prisma"
-	],
+	"keywords": ["database", "prisma"],
 	"license": "MIT",
 	"main": "src/index.ts",
 	"name": "@pedrohb/database",
 	"packageManager": "pnpm@10.6.5",
 	"scripts": {
-		"build": "tsup-node",
 		"db:deploy": "prisma migrate deploy",
 		"db:generate": "prisma generate",
 		"db:migrate": "pnpm env:load prisma migrate dev --skip-generate",
 		"env:load": "dotenv -e ../../.env --"
 	},
 	"types": "src/index.ts",
-	"version": "1.0.0",
-	"dependencies": {
-		"@prisma/client": "6.5.0"
-	}
+	"version": "1.0.0"
 }

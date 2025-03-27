@@ -1,5 +1,13 @@
 import type { SortOrder } from "@/types/sort-order";
 
+/**
+ * Ordena um array de itens com base em um objeto que especifica a ordem de ordenação para cada campo.
+ *
+ * @template T - Tipo dos itens do array.
+ * @param {T[]} items - Array de itens a ser ordenado.
+ * @param {SortOrder<T>} orderBy - Objeto que define os campos e a direção ("asc" ou "desc") para ordenar os itens.
+ * @returns {T[]} Um novo array com os itens ordenados conforme os critérios especificados.
+ */
 export function sortItems<T>(items: T[], orderBy: SortOrder<T>) {
 	if (!orderBy || Object.keys(orderBy).length === 0) {
 		return items;

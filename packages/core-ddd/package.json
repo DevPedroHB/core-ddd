@@ -4,7 +4,7 @@
 		"name": "Pedro Henrique Bérgamo",
 		"url": "https://github.com/DevPedroHB"
 	},
-	"description": "Core DDD is a library for building Domain Driven Design in TypeScript.",
+	"description": "O Core DDD é uma biblioteca para criar Domain Driven Design em TypeScript.",
 	"devDependencies": {
 		"@faker-js/faker": "^9.6.0",
 		"@jest/globals": "^29.7.0",

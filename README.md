@@ -1,3 +1,3 @@
 # Core DDD
 
-Core DDD is a library for building Domain Driven Design in TypeScript.
+O Core DDD é uma biblioteca para criar Domain Driven Design em TypeScript.
