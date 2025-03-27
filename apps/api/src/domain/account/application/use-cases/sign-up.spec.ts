@@ -9,7 +9,7 @@ let fakeHasher: FakeHasher;
 let signUpUseCase: SignUpUseCase;
 let userFactory: UserFactory;
 
-describe("Create user", () => {
+describe("Sign up", () => {
 	beforeEach(() => {
 		inMemoryUsersRepository = new InMemoryUsersRepository();
 		fakeHasher = new FakeHasher();
