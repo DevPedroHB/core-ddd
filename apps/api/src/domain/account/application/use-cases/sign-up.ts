@@ -8,25 +8,25 @@ import {
 import { User as UserTypes } from "@pedrohb/types";
 import { User } from "../../enterprise/entities/user";
 import { Hasher } from "../cryptography/hasher";
-import { UserRepository } from "../repositories/user-repository";
+import { UsersRepository } from "../repositories/users-repository";
 
-export type CreateUserUseCaseRequest = Pick<
+export type SignUpUseCaseRequest = Pick<
 	UserTypes,
 	"name" | "email" | "password"
 >;
 
-export type CreateUserUseCaseResponse = Either<
+export type SignUpUseCaseResponse = Either<
 	AlreadyExistsError,
 	{
 		user: User;
 	}
 >;
 
-export class CreateUserUseCase
-	implements UseCase<CreateUserUseCaseRequest, CreateUserUseCaseResponse>
+export class SignUpUseCase
+	implements UseCase<SignUpUseCaseRequest, SignUpUseCaseResponse>
 {
 	constructor(
-		private readonly userRepository: UserRepository,
+		private readonly usersRepository: UsersRepository,
 		private readonly hasher: Hasher,
 	) {}
 
@@ -34,8 +34,10 @@ export class CreateUserUseCase
 		name,
 		email,
 		password,
-	}: CreateUserUseCaseRequest): Promise<CreateUserUseCaseResponse> {
-		const userWithSameEmail = await this.userRepository.findByFields({ email });
+	}: SignUpUseCaseRequest): Promise<SignUpUseCaseResponse> {
+		const userWithSameEmail = await this.usersRepository.findByFields({
+			email,
+		});
 
 		if (userWithSameEmail) {
 			return error(new AlreadyExistsError("O usuário"));
@@ -49,7 +51,7 @@ export class CreateUserUseCase
 			password: hashedPassword,
 		});
 
-		await this.userRepository.create(user);
+		await this.usersRepository.create(user);
 
 		return success({
 			user,

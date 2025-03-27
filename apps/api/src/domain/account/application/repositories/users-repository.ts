@@ -4,4 +4,4 @@ import { User } from "../../enterprise/entities/user";
 
 export type UserFields = UserTypes;
 
-export abstract class UserRepository extends Repository<UserFields, User> {}
+export abstract class UsersRepository extends Repository<UserFields, User> {}
