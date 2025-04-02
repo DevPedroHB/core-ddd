@@ -1,4 +1,6 @@
 export * from "./common/either";
+export * from "./cryptography/encrypter";
+export * from "./cryptography/hasher";
 export * from "./entities/aggregate-root";
 export * from "./entities/entity";
 export * from "./entities/unique-entity-id";

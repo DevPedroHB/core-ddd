@@ -11,5 +11,5 @@ export abstract class UseCase<UseCaseRequest, UseCaseResponse> {
 	 * @param {UseCaseRequest} request - Dados de entrada para a execução do caso de uso.
 	 * @returns {Promise<UseCaseResponse>} Uma promessa que resolve com a resposta do caso de uso.
 	 */
-	abstract execute(request: UseCaseRequest): Promise<UseCaseResponse>;
+	public abstract execute(request: UseCaseRequest): Promise<UseCaseResponse>;
 }

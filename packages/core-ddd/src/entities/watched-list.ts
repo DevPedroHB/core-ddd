@@ -8,7 +8,7 @@ export abstract class WatchedList<T> {
 	/**
 	 * Array contendo os itens atualmente presentes.
 	 */
-	public _current: T[];
+	private _current: T[];
 	/**
 	 * Array contendo os itens iniciais.
 	 * @private
@@ -236,5 +236,5 @@ export abstract class WatchedList<T> {
 	 * @param {T} b - Segundo item para comparação.
 	 * @returns {boolean} Retorna true se os itens forem considerados iguais; caso contrário, false.
 	 */
-	abstract compare(a: T, b: T): boolean;
+	public abstract compare(a: T, b: T): boolean;
 }
