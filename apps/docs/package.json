@@ -1,6 +1,7 @@
 {
 	"author": "Pedro Henrique Bérgamo",
 	"dependencies": {
+		"@radix-ui/react-dialog": "^1.1.6",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"lucide-react": "^0.487.0",
