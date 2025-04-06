@@ -1,12 +1,5 @@
 "use client";
 
-import { breadcrumbLinks } from "@/constants/breadcrumb-links";
-import { sidebarLinks } from "@/constants/sidebar-links";
-import { Home } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Fragment, useMemo } from "react";
-import { useMediaQuery } from "usehooks-ts";
 import {
 	Breadcrumb,
 	BreadcrumbEllipsis,
@@ -15,15 +8,22 @@ import {
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
-} from "./ui/breadcrumb";
+} from "@/components/ui/breadcrumb";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
+import { breadcrumbLinks } from "@/constants/breadcrumb-links";
+import { sidebarLinks } from "@/constants/sidebar-links";
+import { Home } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Fragment, useMemo } from "react";
+import { useMediaQuery } from "usehooks-ts";
 
-export function DocsBreadcrumb() {
+export function CompBreadcrumb() {
 	const pathname = usePathname();
 	const segments = pathname.split("/").filter(Boolean);
 	const isDesktop = useMediaQuery("(min-width: 48rem)");

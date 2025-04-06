@@ -1,5 +1,7 @@
-import { Topbar } from "@/components/topbar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ReactNode } from "react";
+import { DocsHeader } from "./_components/docs-header";
+import { DocsSidebar } from "./_components/docs-sidebar";
 
 interface IDocsLayout {
 	children: ReactNode;
@@ -7,9 +9,12 @@ interface IDocsLayout {
 
 export default function DocsLayout({ children }: Readonly<IDocsLayout>) {
 	return (
-		<>
-			<Topbar />
-			{children}
-		</>
+		<SidebarProvider>
+			<DocsSidebar />
+			<SidebarInset>
+				<DocsHeader />
+				{children}
+			</SidebarInset>
+		</SidebarProvider>
 	);
 }
