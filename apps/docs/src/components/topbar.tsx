@@ -1,5 +1,9 @@
-import { Sidebar } from "lucide-react";
+import { Sidebar, SunMoon } from "lucide-react";
+import Link from "next/link";
 import { DocsBreadcrumb } from "./docs-breadcrumb";
+import { Github } from "./svgs/github";
+import { NPM } from "./svgs/npm";
+import { ToggleTheme } from "./toggle-theme";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
@@ -11,6 +15,41 @@ export function Topbar() {
 			</Button>
 			<Separator orientation="vertical" className="mr-2 max-h-4" />
 			<DocsBreadcrumb />
+			<ToggleTheme asChild>
+				<Button
+					type="button"
+					variant="ghost"
+					size="icon"
+					className="ml-auto size-7"
+				>
+					<SunMoon className="size-4" />
+				</Button>
+			</ToggleTheme>
+			<Button
+				type="button"
+				variant="ghost"
+				size="icon"
+				className="size-7"
+				asChild
+			>
+				<Link
+					href="https://www.npmjs.com/package/@pedrohb/core-ddd"
+					target="_blank"
+				>
+					<NPM className="size-4" />
+				</Link>
+			</Button>
+			<Button
+				type="button"
+				variant="ghost"
+				size="icon"
+				className="size-7"
+				asChild
+			>
+				<Link href="https://github.com/DevPedroHB/core-ddd" target="_blank">
+					<Github className="invert dark:invert-0 size-4" />
+				</Link>
+			</Button>
 		</header>
 	);
 }

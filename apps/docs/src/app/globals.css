@@ -52,7 +52,7 @@
   --popover: var(--color-zinc-100);
   --popover-foreground: var(--color-zinc-900);
   --primary: var(--color-indigo-600);
-  --primary-foreground: var(--color-zinc-950);
+  --primary-foreground: var(--color-zinc-50);
   --secondary: var(--color-zinc-200);
   --secondary-foreground: var(--color-zinc-800);
   --muted: var(--color-zinc-400);
