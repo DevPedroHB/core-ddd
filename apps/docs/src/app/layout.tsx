@@ -1,4 +1,5 @@
 import { cn } from "@/functions/cn";
+import { ReactQueryProvider } from "@/providers/react-query-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -38,7 +39,9 @@ export default function RootLayout({ children }: Readonly<IRootLayout>) {
 			className={cn("font-sans antialiased scroll-smooth", inter.variable)}
 		>
 			<body className="bg-background text-foreground">
-				<ThemeProvider>{children}</ThemeProvider>
+				<ThemeProvider>
+					<ReactQueryProvider>{children}</ReactQueryProvider>
+				</ThemeProvider>
 			</body>
 		</html>
 	);

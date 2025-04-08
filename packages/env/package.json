@@ -1,0 +1,29 @@
+{
+	"author": "Pedro Henrique Bérgamo",
+	"description": "Pacote de validação para variáveis ambientes do projeto Core DDD",
+	"devDependencies": {
+		"@pedrohb/typescript-config": "workspace:*",
+		"@types/node": "^22.14.0",
+		"tsup": "^8.4.0",
+		"tsx": "^4.19.3",
+		"typescript": "^5.8.3"
+	},
+	"keywords": [
+		"env",
+		"environment",
+		"variables",
+		"validation"
+	],
+	"license": "MIT",
+	"main": "src/index.ts",
+	"name": "@pedrohb/env",
+	"packageManager": "pnpm@10.6.5",
+	"scripts": {
+		"build": "tsup-node"
+	},
+	"types": "src/index.ts",
+	"version": "1.0.0",
+	"dependencies": {
+		"zod": "^3.24.2"
+	}
+}

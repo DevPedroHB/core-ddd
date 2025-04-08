@@ -1,13 +1,18 @@
 {
 	"author": "Pedro Henrique Bérgamo",
 	"dependencies": {
+		"@pedrohb/env": "workspace:*",
+		"@radix-ui/react-avatar": "^1.1.3",
 		"@radix-ui/react-dialog": "^1.1.6",
 		"@radix-ui/react-dropdown-menu": "^2.1.6",
 		"@radix-ui/react-separator": "^1.1.2",
 		"@radix-ui/react-slot": "^1.1.2",
 		"@radix-ui/react-tooltip": "^1.1.8",
+		"@tanstack/react-query": "^5.71.10",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
+		"date-fns": "^4.1.0",
+		"ky": "^1.8.0",
 		"lucide-react": "^0.487.0",
 		"next": "15.3.0-canary.29",
 		"next-themes": "^0.4.6",
@@ -21,9 +26,11 @@
 	"devDependencies": {
 		"@pedrohb/typescript-config": "workspace:*",
 		"@tailwindcss/postcss": "^4",
+		"@tanstack/react-query-devtools": "^5.71.10",
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
+		"dotenv-cli": "^8.0.0",
 		"tailwindcss": "^4",
 		"typescript": "^5"
 	},
@@ -32,9 +39,10 @@
 	"private": true,
 	"scripts": {
 		"build": "next build",
+		"env:load": "dotenv -e ../../.env --",
 		"lint": "next lint",
 		"start": "next start",
-		"start:dev": "next dev --turbopack"
+		"start:dev": "pnpm env:load next dev --turbopack"
 	},
 	"version": "1.0.0"
 }
