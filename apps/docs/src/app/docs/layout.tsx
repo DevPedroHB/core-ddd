@@ -1,4 +1,5 @@
 import { getPackageInfo } from "@/actions/get-package-info";
+import { Footer } from "@/components/footer";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ReactNode } from "react";
 import { DocsHeader } from "./_components/docs-header";
@@ -17,6 +18,7 @@ export default async function DocsLayout({ children }: Readonly<IDocsLayout>) {
 			<SidebarInset>
 				<DocsHeader />
 				{children}
+				<Footer />
 			</SidebarInset>
 		</SidebarProvider>
 	);

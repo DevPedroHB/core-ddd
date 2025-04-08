@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { ReactNode } from "react";
 
 interface IDefaultLayout {
@@ -5,5 +6,10 @@ interface IDefaultLayout {
 }
 
 export default function DefaultLayout({ children }: Readonly<IDefaultLayout>) {
-	return <>{children}</>;
+	return (
+		<>
+			{children}
+			<Footer />
+		</>
+	);
 }
