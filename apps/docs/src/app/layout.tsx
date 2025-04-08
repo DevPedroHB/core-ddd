@@ -3,6 +3,7 @@ import { ReactQueryProvider } from "@/providers/react-query-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ReactNode } from "react";
 import "./globals.css";
 
@@ -40,7 +41,9 @@ export default function RootLayout({ children }: Readonly<IRootLayout>) {
 		>
 			<body className="bg-background text-foreground">
 				<ThemeProvider>
-					<ReactQueryProvider>{children}</ReactQueryProvider>
+					<ReactQueryProvider>
+						<NuqsAdapter>{children}</NuqsAdapter>
+					</ReactQueryProvider>
 				</ThemeProvider>
 			</body>
 		</html>

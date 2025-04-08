@@ -23,7 +23,7 @@ import {
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { ChevronsUpDown, Package } from "lucide-react";
-import { useState } from "react";
+import { parseAsString, useQueryState } from "nuqs";
 
 interface IDocsSidebarVersionSwitcher {
 	packageVersions: {
@@ -37,7 +37,10 @@ export function DocsSidebarVersionSwitcher({
 	time,
 }: IDocsSidebarVersionSwitcher) {
 	const versions = Object.keys(packageVersions);
-	const [version, setVersion] = useState(versions[versions.length - 1]);
+	const [version, setVersion] = useQueryState(
+		"version",
+		parseAsString.withDefault(versions[versions.length - 1]),
+	);
 
 	return (
 		<SidebarMenu>
