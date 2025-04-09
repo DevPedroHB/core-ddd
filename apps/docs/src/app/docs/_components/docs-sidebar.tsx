@@ -55,11 +55,11 @@ export async function DocsSidebar({ packageInfo, ...props }: IDocsSidebar) {
 				<SidebarGroup>
 					<SidebarGroupLabel>Documentação</SidebarGroupLabel>
 					<SidebarMenu>
-						{docsSidebarLinks.map((link) => (
+						{docsSidebarLinks.map((link, index) => (
 							<Collapsible
 								key={link.path}
 								asChild
-								defaultOpen={true}
+								defaultOpen={index === 0}
 								className="group/collapsible"
 							>
 								<SidebarMenuItem>

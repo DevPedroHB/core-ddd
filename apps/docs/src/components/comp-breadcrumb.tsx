@@ -16,7 +16,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { breadcrumbLinks } from "@/constants/breadcrumb-links";
-import { sidebarLinks } from "@/constants/sidebar-links";
+import { docsSidebarLinks } from "@/constants/docs-sidebar-links";
 import { Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,7 +35,7 @@ export function CompBreadcrumb() {
 			map.set(link.path, link.label);
 		}
 
-		for (const category of sidebarLinks) {
+		for (const category of docsSidebarLinks) {
 			map.set(category.path, category.label);
 
 			for (const item of category.items) {
