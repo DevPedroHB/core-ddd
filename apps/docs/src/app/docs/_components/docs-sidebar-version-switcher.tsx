@@ -16,6 +16,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
 	NPMPackageTime,
 	NPMPackageVersion,
@@ -90,4 +91,8 @@ export function DocsSidebarVersionSwitcher({
 			</SidebarMenuItem>
 		</SidebarMenu>
 	);
+}
+
+export function DocsSidebarVersionSwitcherSkeleton() {
+	return <Skeleton className="w-full h-12" />;
 }

@@ -7,6 +7,7 @@ interface ILink extends ComponentProps<typeof NextLink> {}
 export function Link({ className, ...props }: ILink) {
 	return (
 		<NextLink
+			data-slot="link"
 			className={cn(
 				"font-medium transition-all",
 				"hover:text-primary",

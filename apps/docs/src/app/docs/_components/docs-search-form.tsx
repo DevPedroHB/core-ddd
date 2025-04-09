@@ -9,6 +9,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { SidebarInput } from "@/components/ui/sidebar";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
 	SearchFormSchema,
 	searchFormSchema,
@@ -53,4 +54,8 @@ export function DocsSearchForm() {
 			</form>
 		</Form>
 	);
+}
+
+export function DocsSearchFormSkeleton() {
+	return <Skeleton className="w-full h-8" />;
 }
