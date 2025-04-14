@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/functions/cn";
 import { ReactQueryProvider } from "@/providers/react-query-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 		default: "Core DDD",
 	},
 	description:
-		"Documentação da biblioteca Core DDD para criar sistemas com o padrão Domain Driven Design em TypeScript.",
+		"Uma biblioteca TypeScript para implementação de Domain-Driven Design (DDD) em aplicações Node.js. A biblioteca fornece estruturas essenciais para construir aplicações baseadas em DDD de forma clara e consistente.",
 	keywords: ["DDD", "Domain Driven Design", "Clean Architecture", "Typescript"],
 	authors: [
 		{
@@ -42,7 +43,10 @@ export default function RootLayout({ children }: Readonly<IRootLayout>) {
 			<body className="bg-background text-foreground">
 				<ThemeProvider>
 					<ReactQueryProvider>
-						<NuqsAdapter>{children}</NuqsAdapter>
+						<NuqsAdapter>
+							{children}
+							<Toaster visibleToasts={9} richColors />
+						</NuqsAdapter>
 					</ReactQueryProvider>
 				</ThemeProvider>
 			</body>

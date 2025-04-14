@@ -1,4 +1,4 @@
-import { DocsHeaderButton } from "@/app/docs/_components/docs-header-button";
+import { HeaderButton } from "@/components/header-button";
 import { Github } from "@/components/svgs/github";
 import { NPM } from "@/components/svgs/npm";
 import { ToggleTheme } from "@/components/toggle-theme";
@@ -23,23 +23,23 @@ export function DefaultHeader() {
 				</Link>
 			</div>
 			<ToggleTheme asChild>
-				<DocsHeaderButton className="ml-auto">
+				<HeaderButton className="ml-auto">
 					<SunMoon className="size-4" />
-				</DocsHeaderButton>
+				</HeaderButton>
 			</ToggleTheme>
-			<DocsHeaderButton asChild>
+			<HeaderButton asChild>
 				<Link
 					href="https://www.npmjs.com/package/@pedrohb/core-ddd"
 					target="_blank"
 				>
 					<NPM className="size-4" />
 				</Link>
-			</DocsHeaderButton>
-			<DocsHeaderButton asChild>
+			</HeaderButton>
+			<HeaderButton asChild>
 				<Link href="https://github.com/DevPedroHB/core-ddd" target="_blank">
 					<Github className="invert dark:invert-0 size-4" />
 				</Link>
-			</DocsHeaderButton>
+			</HeaderButton>
 		</header>
 	);
 }

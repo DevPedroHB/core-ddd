@@ -1,4 +1,5 @@
 import { CompBreadcrumb } from "@/components/comp-breadcrumb";
+import { HeaderButton } from "@/components/header-button";
 import { Github } from "@/components/svgs/github";
 import { NPM } from "@/components/svgs/npm";
 import { ToggleTheme } from "@/components/toggle-theme";
@@ -6,7 +7,6 @@ import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { SunMoon } from "lucide-react";
 import Link from "next/link";
-import { DocsHeaderButton } from "./docs-header-button";
 
 export function DocsHeader() {
 	return (
@@ -15,23 +15,23 @@ export function DocsHeader() {
 			<Separator orientation="vertical" className="mr-2 max-h-4" />
 			<CompBreadcrumb />
 			<ToggleTheme asChild>
-				<DocsHeaderButton className="ml-auto">
+				<HeaderButton className="ml-auto">
 					<SunMoon className="size-4" />
-				</DocsHeaderButton>
+				</HeaderButton>
 			</ToggleTheme>
-			<DocsHeaderButton asChild>
+			<HeaderButton asChild>
 				<Link
 					href="https://www.npmjs.com/package/@pedrohb/core-ddd"
 					target="_blank"
 				>
 					<NPM className="size-4" />
 				</Link>
-			</DocsHeaderButton>
-			<DocsHeaderButton asChild>
+			</HeaderButton>
+			<HeaderButton asChild>
 				<Link href="https://github.com/DevPedroHB/core-ddd" target="_blank">
 					<Github className="invert dark:invert-0 size-4" />
 				</Link>
-			</DocsHeaderButton>
+			</HeaderButton>
 		</header>
 	);
 }

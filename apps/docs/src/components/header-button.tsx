@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/functions/cn";
 import { ComponentProps } from "react";
 
-interface IDocsHeaderButton extends ComponentProps<typeof Button> {}
+interface IHeaderButton extends ComponentProps<typeof Button> {}
 
-export function DocsHeaderButton({ className, ...props }: IDocsHeaderButton) {
+export function HeaderButton({ className, ...props }: IHeaderButton) {
 	return (
 		<Button
 			type="button"
