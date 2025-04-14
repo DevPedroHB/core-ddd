@@ -18,7 +18,7 @@ export default async function DocsLayout({ children }: Readonly<IDocsLayout>) {
 			<DocsSidebar packageInfo={packageInfo} />
 			<SidebarInset>
 				<DocsHeader />
-				<main className="flex flex-col justify-between gap-4 dark:prose-invert px-4 pb-4 max-w-none min-h-screen prose prose-zinc">
+				<main className="flex flex-col justify-between gap-4 dark:prose-invert px-4 pb-4 max-w-none min-h-[calc(100vh-7.3125rem)] prose prose-zinc">
 					{children}
 					<DocsNavigationButtons />
 				</main>
