@@ -11,10 +11,6 @@ export const docsSidebarLinks = [
 				label: "Instalação",
 				path: "installation",
 			},
-			{
-				label: "Quick Start",
-				path: "quick-start",
-			},
 		],
 	},
 	{

@@ -20,9 +20,15 @@ importers:
 
   apps/docs:
     dependencies:
+      '@faker-js/faker':
+        specifier: ^9.6.0
+        version: 9.6.0
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.0.1(react-hook-form@7.55.0(react@19.1.0))
+      '@pedrohb/core-ddd':
+        specifier: workspace:*
+        version: link:../../packages/core-ddd
       '@pedrohb/env':
         specifier: workspace:*
         version: link:../../packages/env

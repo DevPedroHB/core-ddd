@@ -35,7 +35,13 @@ export function DocsCode({ children, ...props }: IDocsCode) {
 
 	return (
 		<div className="relative">
-			<SyntaxHighlighter style={dracula} showLineNumbers {...props}>
+			<SyntaxHighlighter
+				style={dracula}
+				showLineNumber
+				wrapLines
+				wrapLongLines
+				{...props}
+			>
 				{String(children).trim()}
 			</SyntaxHighlighter>
 			<TooltipProvider>
