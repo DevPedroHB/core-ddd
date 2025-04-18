@@ -21,6 +21,7 @@
 			},
 			"recommended": true,
 			"style": {
+				"noParameterAssign": "off",
 				"useImportType": "off"
 			},
 			"suspicious": {
