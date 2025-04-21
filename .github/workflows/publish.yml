@@ -28,7 +28,9 @@ jobs:
         run: pnpm install
 
       - name: Build do package
-        run: pnpm run build
+        run: |
+          cd packages/core-ddd
+          pnpm run build
 
       - name: Publicar no NPM
         env:
