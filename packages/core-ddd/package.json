@@ -4,6 +4,10 @@
 		"name": "Pedro Henrique Bérgamo",
 		"url": "https://github.com/DevPedroHB"
 	},
+	"bugs": {
+		"email": "pedroh.bergamo20@gmail.com",
+		"url": "https://github.com/DevPedroHB/core-ddd/issues"
+	},
 	"description": "O Core DDD é uma biblioteca para criar Domain Driven Design em TypeScript.",
 	"devDependencies": {
 		"@faker-js/faker": "^9.6.0",
@@ -19,7 +23,14 @@
 		"tsx": "^4.19.3",
 		"typescript": "5.8.2"
 	},
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
+		}
+	},
 	"files": ["dist"],
+	"homepage": "https://core-ddd.vercel.app",
 	"keywords": [
 		"DDD",
 		"Domain Driven Design",
@@ -28,11 +39,13 @@
 	],
 	"license": "MIT",
 	"main": "dist/index.js",
+	"module": "dist/index.mjs",
 	"name": "@pedrohb/core-ddd",
 	"packageManager": "pnpm@10.6.5",
 	"publishConfig": {
 		"access": "public"
 	},
+	"readme": "README.md",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/DevPedroHB/core-ddd.git"
@@ -45,5 +58,5 @@
 		"test:watch": "jest --watch"
 	},
 	"types": "dist/index.d.ts",
-	"version": "1.1.0"
+	"version": "1.2.0"
 }

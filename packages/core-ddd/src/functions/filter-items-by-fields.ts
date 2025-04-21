@@ -16,7 +16,7 @@ export function filterItemsByFields<E, T>(items: E[], fields: FindByFields<T>) {
 
 	return items.filter((item) => {
 		return Object.entries(fields).every(([key, value]) => {
-			return item[key as keyof E] === value;
+			return JSON.stringify(item[key as keyof E]) === JSON.stringify(value);
 		});
 	});
 }

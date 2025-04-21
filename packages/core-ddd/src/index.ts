@@ -14,6 +14,7 @@ export * from "./events/domain-events";
 export * from "./functions/filter-items-by-fields";
 export * from "./functions/paginate-items";
 export * from "./functions/sort-items";
+export * from "./functions/wait-for";
 export * from "./interfaces/domain-event";
 export * from "./interfaces/event-handler";
 export * from "./interfaces/file-upload";

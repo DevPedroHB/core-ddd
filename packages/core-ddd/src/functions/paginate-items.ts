@@ -9,7 +9,7 @@ import type { Pagination } from "@/interfaces/pagination";
  * @returns {T[]} Array contendo os itens correspondentes à página especificada.
  */
 export function paginateItems<T>(items: T[], pagination: Pagination) {
-	if (!pagination) {
+	if (!pagination || Object.keys(pagination).length === 0) {
 		return items;
 	}
 
