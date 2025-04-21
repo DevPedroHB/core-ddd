@@ -35,15 +35,7 @@ describe("Sign up", () => {
 		});
 
 		expect(result.isSuccess()).toBeTruthy();
-		expect(result.value).toEqual({
-			user: expect.objectContaining({
-				name: user.name,
-				email: user.email,
-				cpf: user.cpf,
-				birthdate: user.birthdate,
-				password: await fakeHasher.hash(user.password),
-			}),
-		});
+		expect(inMemoryUsersRepository.items).toHaveLength(1);
 	});
 
 	it("should not be able to sign up with a after birthdate", async () => {

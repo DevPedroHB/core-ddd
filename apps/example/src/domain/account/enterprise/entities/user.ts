@@ -1,4 +1,6 @@
-import { Entity, Optional, UniqueEntityId } from "@pedrohb/core-ddd";
+import { AggregateRoot, Optional, UniqueEntityId } from "@pedrohb/core-ddd";
+import { UserCreatedEvent } from "../events/user-created-event";
+import { VerifyEmailEvent } from "../events/verify-email-event";
 import { CPF } from "../value-objects/cpf";
 import { UserAddress } from "./user-address";
 
@@ -21,7 +23,7 @@ export interface IUser {
 	address: UserAddress | null;
 }
 
-export class User extends Entity<IUser> {
+export class User extends AggregateRoot<IUser> {
 	get name() {
 		return this.props.name;
 	}
@@ -125,6 +127,11 @@ export class User extends Entity<IUser> {
 			},
 			id,
 		);
+
+		if (!id && !props.emailVerifiedAt) {
+			user.addDomainEvent(new UserCreatedEvent(user));
+			user.addDomainEvent(new VerifyEmailEvent(user));
+		}
 
 		return user;
 	}
