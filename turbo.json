@@ -5,6 +5,7 @@
 		"PORT",
 		"JWT_PRIVATE_KEY",
 		"JWT_PUBLIC_KEY",
+		"DATABASE_URL",
 		"NPM_URL"
 	],
 	"tasks": {
@@ -15,6 +16,7 @@
 				"PORT",
 				"JWT_PRIVATE_KEY",
 				"JWT_PUBLIC_KEY",
+				"DATABASE_URL",
 				"NPM_URL"
 			],
 			"inputs": ["$TURBO_DEFAULT$", ".env*"],
@@ -22,6 +24,16 @@
 		},
 		"check-types": {
 			"dependsOn": ["^check-types"]
+		},
+		"db:deploy": {
+			"cache": false
+		},
+		"db:generate": {
+			"cache": false
+		},
+		"db:migrate": {
+			"cache": false,
+			"persistent": true
 		},
 		"lint": {
 			"dependsOn": ["^lint"]

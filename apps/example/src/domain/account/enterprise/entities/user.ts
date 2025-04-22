@@ -18,8 +18,8 @@ export interface IUser {
 	password: string;
 	role: UserRole;
 	emailVerifiedAt?: Date | null;
-	updatedAt?: Date | null;
 	createdAt: Date;
+	updatedAt?: Date | null;
 	address: UserAddress | null;
 }
 
@@ -88,12 +88,12 @@ export class User extends AggregateRoot<IUser> {
 		return this.props.emailVerifiedAt;
 	}
 
-	get updatedAt() {
-		return this.props.updatedAt;
-	}
-
 	get createdAt() {
 		return this.props.createdAt;
+	}
+
+	get updatedAt() {
+		return this.props.updatedAt;
 	}
 
 	get address() {

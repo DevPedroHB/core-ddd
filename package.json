@@ -10,7 +10,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"build": "turbo run build",
+		"build": "turbo run db:generate && turbo run build",
 		"start:dev": "turbo run start:dev",
 		"lint": "biome lint",
 		"format": "biome format",
