@@ -1,5 +1,5 @@
 import { Entity } from "@/entities/entity";
-import type { UniqueEntityId } from "@/entities/unique-entity-id";
+import { UUID } from "@/entities/entity-ids/uuid";
 import type { Optional } from "@/types/optional";
 
 export interface ITestEntity {
@@ -10,7 +10,7 @@ export interface ITestEntity {
 	updatedAt?: Date | null;
 }
 
-export class TestEntity extends Entity<ITestEntity> {
+export class TestEntity extends Entity<ITestEntity, UUID> {
 	get name() {
 		return this.props.name;
 	}
@@ -53,16 +53,13 @@ export class TestEntity extends Entity<ITestEntity> {
 		this.props.updatedAt = new Date();
 	}
 
-	public static create(
-		props: Optional<ITestEntity, "createdAt">,
-		id?: UniqueEntityId,
-	) {
+	public static create(props: Optional<ITestEntity, "createdAt">, id?: UUID) {
 		const testEntity = new TestEntity(
 			{
 				...props,
 				createdAt: props.createdAt ?? new Date(),
 			},
-			id,
+			id ?? UUID.create(UUID.generate()),
 		);
 
 		return testEntity;

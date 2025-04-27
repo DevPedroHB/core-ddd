@@ -1,6 +1,6 @@
 import type { AggregateRoot } from "@/entities/aggregate-root";
-import type { UniqueEntityId } from "@/entities/unique-entity-id";
 import type { DomainEvent } from "@/interfaces/domain-event";
+import { EntityId } from "@/interfaces/entity-id";
 
 /**
  * Tipo para a função callback que lida com um evento de domínio.
@@ -8,7 +8,9 @@ import type { DomainEvent } from "@/interfaces/domain-event";
  * @template T - Tipo do evento de domínio.
  * @param {T} event - O evento de domínio.
  */
-type DomainEventCallback<T extends DomainEvent> = (event: T) => void;
+type DomainEventCallback<T extends DomainEvent<EntityId<unknown>>> = (
+	event: T,
+) => void;
 
 /**
  * Classe responsável por gerenciar os eventos de domínio e os agregados marcados para despacho.
@@ -20,13 +22,15 @@ export class DomainEvents {
 	 */
 	private static handlersMap: Record<
 		string,
-		DomainEventCallback<DomainEvent>[]
+		DomainEventCallback<DomainEvent<EntityId<unknown>>>[]
 	> = {};
 	/**
 	 * Conjunto de agregados que foram marcados para despacho de eventos.
 	 * @private
 	 */
-	private static markedAggregates: Set<AggregateRoot<unknown>> = new Set();
+	private static markedAggregates: Set<
+		AggregateRoot<unknown, EntityId<unknown>>
+	> = new Set();
 	/**
 	 * Flag que indica se os eventos devem ser executados.
 	 */
@@ -35,9 +39,11 @@ export class DomainEvents {
 	/**
 	 * Marca um agregado para que seus eventos de domínio sejam despachados.
 	 *
-	 * @param {AggregateRoot<unknown>} aggregate - Agregado a ser marcado para despacho.
+	 * @param {AggregateRoot<unknown, EntityId<unknown>>} aggregate - Agregado a ser marcado para despacho.
 	 */
-	public static markAggregateForDispatch(aggregate: AggregateRoot<unknown>) {
+	public static markAggregateForDispatch(
+		aggregate: AggregateRoot<unknown, EntityId<unknown>>,
+	) {
 		const aggregateFound = !!DomainEvents.findMarkedAggregateByID(aggregate.id);
 
 		if (!aggregateFound) {
@@ -48,9 +54,9 @@ export class DomainEvents {
 	/**
 	 * Despacha os eventos de domínio para o agregado com o ID fornecido.
 	 *
-	 * @param {UniqueEntityId} id - ID do agregado para o qual os eventos devem ser despachados.
+	 * @param {EntityId<unknown>} id - ID do agregado para o qual os eventos devem ser despachados.
 	 */
-	public static dispatchEventsForAggregate(id: UniqueEntityId) {
+	public static dispatchEventsForAggregate(id: EntityId<unknown>) {
 		const aggregate = DomainEvents.findMarkedAggregateByID(id);
 
 		if (aggregate) {
@@ -69,7 +75,7 @@ export class DomainEvents {
 	 * @param {string} eventName - Nome do evento a ser registrado.
 	 */
 	public static register(
-		callback: DomainEventCallback<DomainEvent>,
+		callback: DomainEventCallback<DomainEvent<EntityId<unknown>>>,
 		eventName: string,
 	) {
 		const wasEventRegisteredBefore = eventName in DomainEvents.handlersMap;
@@ -99,9 +105,11 @@ export class DomainEvents {
 	 * Despacha todos os eventos de domínio registrados para um agregado.
 	 *
 	 * @private
-	 * @param {AggregateRoot<unknown>} aggregate - Agregado cujo eventos serão despachados.
+	 * @param {AggregateRoot<unknown, EntityId<unknown>>} aggregate - Agregado cujo eventos serão despachados.
 	 */
-	private static dispatchAggregateEvents(aggregate: AggregateRoot<unknown>) {
+	private static dispatchAggregateEvents(
+		aggregate: AggregateRoot<unknown, EntityId<unknown>>,
+	) {
 		for (const event of aggregate.domainEvents) {
 			DomainEvents.dispatch(event);
 		}
@@ -111,10 +119,10 @@ export class DomainEvents {
 	 * Remove um agregado da lista de agregados marcados para despacho.
 	 *
 	 * @private
-	 * @param {AggregateRoot<unknown>} aggregate - Agregado a ser removido.
+	 * @param {AggregateRoot<unknown, EntityId<unknown>>} aggregate - Agregado a ser removido.
 	 */
 	private static removeAggregateFromMarkedDispatchList(
-		aggregate: AggregateRoot<unknown>,
+		aggregate: AggregateRoot<unknown, EntityId<unknown>>,
 	) {
 		DomainEvents.markedAggregates.delete(aggregate);
 	}
@@ -123,12 +131,12 @@ export class DomainEvents {
 	 * Busca um agregado marcado pelo seu ID.
 	 *
 	 * @private
-	 * @param {UniqueEntityId} id - ID do agregado a ser buscado.
-	 * @returns {AggregateRoot<unknown> | undefined} O agregado encontrado ou undefined se não existir.
+	 * @param {EntityId<unknown>} id - ID do agregado a ser buscado.
+	 * @returns {AggregateRoot<unknown, EntityId<unknown>> | undefined} O agregado encontrado ou undefined se não existir.
 	 */
 	private static findMarkedAggregateByID(
-		id: UniqueEntityId,
-	): AggregateRoot<unknown> | undefined {
+		id: EntityId<unknown>,
+	): AggregateRoot<unknown, EntityId<unknown>> | undefined {
 		for (const aggregate of DomainEvents.markedAggregates) {
 			if (aggregate.id.equals(id)) {
 				return aggregate;
@@ -144,7 +152,7 @@ export class DomainEvents {
 	 * @private
 	 * @param {DomainEvent} event - Evento de domínio a ser despachado.
 	 */
-	private static dispatch(event: DomainEvent) {
+	private static dispatch(event: DomainEvent<EntityId<unknown>>) {
 		if (!DomainEvents.shouldRun) {
 			return;
 		}

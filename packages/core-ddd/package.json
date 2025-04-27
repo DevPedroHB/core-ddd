@@ -8,6 +8,11 @@
 		"email": "pedroh.bergamo20@gmail.com",
 		"url": "https://github.com/DevPedroHB/core-ddd/issues"
 	},
+	"dependencies": {
+		"@paralleldrive/cuid2": "^2.2.2",
+		"ulid": "^3.0.0",
+		"uuid": "^11.1.0"
+	},
 	"description": "O Core DDD é uma biblioteca para criar Domain Driven Design em TypeScript.",
 	"devDependencies": {
 		"@faker-js/faker": "^9.6.0",
@@ -58,5 +63,5 @@
 		"test:watch": "jest --watch"
 	},
 	"types": "dist/index.d.ts",
-	"version": "1.2.0"
+	"version": "1.3.0"
 }

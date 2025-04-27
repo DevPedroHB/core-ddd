@@ -1,5 +1,5 @@
 import { AggregateRoot } from "@/entities/aggregate-root";
-import type { UniqueEntityId } from "@/entities/unique-entity-id";
+import { UUID } from "@/entities/entity-ids/uuid";
 import type { Optional } from "@/types/optional";
 import { TestAggregateRootEvent } from "@tests/events/test-aggregate-root-event";
 
@@ -11,7 +11,7 @@ export interface ITestAggregateRoot {
 	updatedAt?: Date | null;
 }
 
-export class TestAggregateRoot extends AggregateRoot<ITestAggregateRoot> {
+export class TestAggregateRoot extends AggregateRoot<ITestAggregateRoot, UUID> {
 	get name() {
 		return this.props.name;
 	}
@@ -60,14 +60,14 @@ export class TestAggregateRoot extends AggregateRoot<ITestAggregateRoot> {
 
 	public static create(
 		props: Optional<ITestAggregateRoot, "createdAt">,
-		id?: UniqueEntityId,
+		id?: UUID,
 	) {
 		const testAggregateRoot = new TestAggregateRoot(
 			{
 				...props,
 				createdAt: props.createdAt ?? new Date(),
 			},
-			id,
+			id ?? UUID.create(UUID.generate()),
 		);
 
 		if (!id) {

@@ -1,5 +1,6 @@
 import { DomainEvents } from "@/events/domain-events";
 import type { DomainEvent } from "@/interfaces/domain-event";
+import { EntityId } from "@/interfaces/entity-id";
 import { Entity } from "./entity";
 
 /**
@@ -7,13 +8,17 @@ import { Entity } from "./entity";
  * eventos de domínio associados à sua operação.
  *
  * @template T - Tipo das propriedades da entidade.
+ * @template ID - Tipo do identificador, deve estender EntityId.
  */
-export abstract class AggregateRoot<T> extends Entity<T> {
+export abstract class AggregateRoot<T, ID extends EntityId<ID>> extends Entity<
+	T,
+	ID
+> {
 	/**
 	 * Conjunto privado que armazena os eventos de domínio associados a este aggregate.
 	 * @private
 	 */
-	private _domainEvents: Set<DomainEvent> = new Set();
+	private _domainEvents: Set<DomainEvent<ID>> = new Set();
 
 	/**
 	 * Obtém os eventos de domínio registrados neste aggregate.
@@ -30,7 +35,7 @@ export abstract class AggregateRoot<T> extends Entity<T> {
 	 * @param {DomainEvent} domainEvent - Evento de domínio a ser adicionado.
 	 * @protected
 	 */
-	protected addDomainEvent(domainEvent: DomainEvent) {
+	protected addDomainEvent(domainEvent: DomainEvent<ID>) {
 		this._domainEvents.add(domainEvent);
 
 		DomainEvents.markAggregateForDispatch(this);

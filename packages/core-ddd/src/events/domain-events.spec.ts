@@ -1,4 +1,4 @@
-import { UniqueEntityId } from "@/entities/unique-entity-id";
+import { UUID } from "@/entities/entity-ids/uuid";
 import { TestAggregateRoot } from "@tests/entities/test-aggregate-root";
 import { TestAggregateRootEvent } from "@tests/events/test-aggregate-root-event";
 import { DomainEvents } from "./domain-events";
@@ -79,7 +79,7 @@ describe("Domain events", () => {
 
 		DomainEvents.register(callbackSpy, "TestAggregateRootEvent");
 
-		const nonExistingAggregateId = new UniqueEntityId();
+		const nonExistingAggregateId = UUID.create(UUID.generate());
 
 		DomainEvents.dispatchEventsForAggregate(nonExistingAggregateId);
 

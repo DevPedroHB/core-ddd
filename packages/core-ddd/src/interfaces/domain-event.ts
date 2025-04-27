@@ -1,19 +1,11 @@
-import type { UniqueEntityId } from "@/entities/unique-entity-id";
+import type { EntityId } from "@/interfaces/entity-id";
 
 /**
- * Representa um evento de domínio.
+ * Representa um evento de domínio associado a um agregado.
  *
- * @interface DomainEvent
+ * @template ID Tipo de identificador do agregado (ex.: UUID, CUID, etc.).
  */
-export interface DomainEvent {
-	/**
-	 * Data e hora em que o evento ocorreu.
-	 */
+export interface DomainEvent<ID extends EntityId<ID>> {
 	readonly occurredAt: Date;
-	/**
-	 * Obtém o ID do agregado associado a este evento.
-	 *
-	 * @returns {UniqueEntityId} ID do agregado.
-	 */
-	getAggregateId(): UniqueEntityId;
+	getAggregateId(): ID;
 }

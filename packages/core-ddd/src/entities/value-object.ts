@@ -24,10 +24,10 @@ export abstract class ValueObject<T> {
 	 * Compara este objeto de valor com outro para determinar se são iguais.
 	 * A igualdade é baseada na comparação dos valores das propriedades.
 	 *
-	 * @param {ValueObject<unknown>} valueObject - Outro objeto de valor a ser comparado.
+	 * @param {ValueObject<T>} valueObject - Outro objeto de valor a ser comparado.
 	 * @returns {boolean} Retorna true se os objetos de valor forem iguais; caso contrário, false.
 	 */
-	public equals(valueObject: ValueObject<unknown>) {
+	public equals(valueObject: ValueObject<T>) {
 		if (this === valueObject) {
 			return true;
 		}

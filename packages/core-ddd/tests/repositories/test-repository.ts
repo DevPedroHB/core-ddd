@@ -1,11 +1,13 @@
+import { UUID } from "@/entities/entity-ids/uuid";
 import { Repository } from "@/repositories/repository";
-import { EntityWithId } from "@/types/entity-with-id";
 import {
 	ITestAggregateRoot,
 	TestAggregateRoot,
 } from "@tests/entities/test-aggregate-root";
 
-export type TestAggregateRootFields = EntityWithId<ITestAggregateRoot>;
+export type TestAggregateRootFields = ITestAggregateRoot & {
+	id: UUID;
+};
 
 export abstract class TestRepository extends Repository<
 	TestAggregateRootFields,

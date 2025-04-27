@@ -1,59 +1,44 @@
-import { UniqueEntityId } from "./unique-entity-id";
+import { EntityId } from "@/interfaces/entity-id";
 
 /**
- * Classe abstrata que representa uma entidade com uma identificação única e propriedades associadas.
+ * Classe abstrata genérica que representa uma entidade de domínio com um identificador único.
  *
  * @template T - Tipo das propriedades da entidade.
+ * @template ID - Tipo do identificador, deve estender EntityId.
  */
-export abstract class Entity<T> {
+export abstract class Entity<T, ID extends EntityId<ID>> {
 	/**
-	 * ID única da entidade.
-	 * @private
+	 * Identificador único da entidade.
 	 */
-	private readonly _id: UniqueEntityId;
+	public readonly id: ID;
 	/**
-	 * Propriedades da entidade.
-	 * @protected
+	 * Propriedades internas da entidade.
+	 * Protegido para uso apenas em subclasses.
 	 */
 	protected readonly props: T;
 
 	/**
-	 * Cria uma instância de Entity.
-	 * Se um ID não for fornecido, é gerado um novo UniqueEntityId.
+	 * Construtor protegido para inicialização das propriedades e do identificador.
 	 *
-	 * @param {T} props - Propriedades associadas à entidade.
-	 * @param {UniqueEntityId} [id] - ID opcional da entidade.
+	 * @param {T} props - Objeto contendo as propriedades da entidade.
+	 * @param {ID} id - Identificador único da entidade.
 	 */
-	protected constructor(props: T, id?: UniqueEntityId) {
-		this._id = id ?? new UniqueEntityId();
+	protected constructor(props: T, id: ID) {
+		this.id = id;
 		this.props = props;
 	}
 
 	/**
-	 * Obtém o ID único da entidade.
+	 * Compara esta entidade com outra para verificar igualdade de identidade.
 	 *
-	 * @returns {UniqueEntityId} ID único da entidade.
+	 * @param {Entity<T, ID>} entity - Outra entidade a ser comparada.
+	 * @returns {boolean} True se as duas entidades forem o mesmo objeto ou tiverem o mesmo identificador.
 	 */
-	get id() {
-		return this._id;
-	}
-
-	/**
-	 * Compara esta entidade com outra para verificar se são iguais.
-	 * Duas entidades são consideradas iguais se seus IDs são iguais.
-	 *
-	 * @param {Entity<unknown>} entity - Outra entidade para comparação.
-	 * @returns {boolean} Retorna true se as entidades forem iguais; caso contrário, false.
-	 */
-	public equals(entity: Entity<unknown>) {
+	public equals(entity: Entity<T, ID>) {
 		if (this === entity) {
 			return true;
 		}
 
-		if (this.id.equals(entity.id)) {
-			return true;
-		}
-
-		return false;
+		return this.id.equals(entity.id);
 	}
 }
