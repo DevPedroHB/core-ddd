@@ -7,5 +7,6 @@
 	"githubPullRequests.experimental.useQuickChat": true,
 	"githubPullRequests.experimental.notificationsView": true,
 	"editor.defaultFormatter": "biomejs.biome",
-	"github.copilot.chat.editor.temporalContext.enabled": true
+	"github.copilot.chat.editor.temporalContext.enabled": true,
+	"cSpell.words": ["sindresorhus"]
 }

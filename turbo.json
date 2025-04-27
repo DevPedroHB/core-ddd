@@ -6,6 +6,10 @@
 		"JWT_PRIVATE_KEY",
 		"JWT_PUBLIC_KEY",
 		"DATABASE_URL",
+		"REDIS_HOST",
+		"REDIS_PORT",
+		"REDIS_PASSWORD",
+		"REDIS_DB",
 		"NPM_URL"
 	],
 	"tasks": {
@@ -17,6 +21,10 @@
 				"JWT_PRIVATE_KEY",
 				"JWT_PUBLIC_KEY",
 				"DATABASE_URL",
+				"REDIS_HOST",
+				"REDIS_PORT",
+				"REDIS_PASSWORD",
+				"REDIS_DB",
 				"NPM_URL"
 			],
 			"inputs": ["$TURBO_DEFAULT$", ".env*"],

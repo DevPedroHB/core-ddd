@@ -8,6 +8,10 @@ export const envSchema = z.object({
 	JWT_PRIVATE_KEY: z.string(),
 	JWT_PUBLIC_KEY: z.string(),
 	DATABASE_URL: z.string().url(),
+	REDIS_HOST: z.string(),
+	REDIS_PORT: z.coerce.number().default(6379),
+	REDIS_PASSWORD: z.string(),
+	REDIS_DB: z.coerce.number().default(0),
 	NPM_URL: z.string().url(),
 });
 

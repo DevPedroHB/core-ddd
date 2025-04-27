@@ -4,8 +4,8 @@ import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
 import { EnvModule } from "../env/env.module";
 import { EnvService } from "../env/env.service";
-import { JwtGuard } from "./jwt.guard";
-import { JwtStrategy } from "./jwt.strategy";
+import { JwtGuard } from "./guards/jwt.guard";
+import { JwtStrategy } from "./strategies/jwt.strategy";
 
 @Module({
 	imports: [
