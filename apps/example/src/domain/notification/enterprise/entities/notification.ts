@@ -1,14 +1,14 @@
-import { Entity, Optional, UniqueEntityId } from "@pedrohb/core-ddd";
+import { Entity, Optional, UUID } from "@pedrohb/core-ddd";
 
 export interface INotification {
 	title: string;
 	content: string;
 	readAt?: Date | null;
 	createdAt: Date;
-	recipientId: UniqueEntityId;
+	recipientId: UUID;
 }
 
-export class Notification extends Entity<INotification> {
+export class Notification extends Entity<INotification, UUID> {
 	get title() {
 		return this.props.title;
 	}
@@ -33,16 +33,13 @@ export class Notification extends Entity<INotification> {
 		this.props.readAt = new Date();
 	}
 
-	public static create(
-		props: Optional<INotification, "createdAt">,
-		id?: UniqueEntityId,
-	) {
+	public static create(props: Optional<INotification, "createdAt">, id?: UUID) {
 		const notification = new Notification(
 			{
 				...props,
 				createdAt: props.createdAt ?? new Date(),
 			},
-			id,
+			id ?? UUID.create(UUID.generate()),
 		);
 
 		return notification;

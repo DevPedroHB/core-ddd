@@ -1,6 +1,6 @@
-import { generateCpf } from "@/core/functions/generate-cpf";
 import {
 	AlreadyExistsError,
+	CPF,
 	InvalidCredentialsError,
 	NotAllowedError,
 } from "@pedrohb/core-ddd";
@@ -101,7 +101,7 @@ describe("Sign up", () => {
 		const resultSameEmail = await signUpUseCase.execute({
 			name: user.name,
 			email: user.email,
-			cpf: generateCpf(),
+			cpf: CPF.generate(),
 			birthdate: user.birthdate,
 			password: user.password,
 		});

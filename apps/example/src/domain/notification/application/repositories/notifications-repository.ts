@@ -1,12 +1,4 @@
-import { EntityWithId, Repository } from "@pedrohb/core-ddd";
-import {
-	INotification,
-	Notification,
-} from "../../enterprise/entities/notification";
+import { Repository } from "@pedrohb/core-ddd";
+import { Notification } from "../../enterprise/entities/notification";
 
-export type NotificationFields = EntityWithId<INotification>;
-
-export abstract class NotificationsRepository extends Repository<
-	NotificationFields,
-	Notification
-> {}
+export abstract class NotificationsRepository extends Repository<Notification> {}

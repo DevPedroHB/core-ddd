@@ -36,7 +36,7 @@ describe("Create notification", () => {
 		const result = await createNotificationUseCase.execute({
 			title: notification.title,
 			content: notification.content,
-			recipientId: notification.recipientId.id,
+			recipientId: notification.recipientId.uuid,
 		});
 
 		expect(result.isSuccess()).toBeTruthy();
@@ -51,7 +51,7 @@ describe("Create notification", () => {
 		const result = await createNotificationUseCase.execute({
 			title: notification.title,
 			content: "An invalid content",
-			recipientId: notification.recipientId.id,
+			recipientId: notification.recipientId.uuid,
 		});
 
 		expect(result.isError()).toBeTruthy();
@@ -64,7 +64,7 @@ describe("Create notification", () => {
 		const result = await createNotificationUseCase.execute({
 			title: notification.title,
 			content: notification.content,
-			recipientId: notification.recipientId.id,
+			recipientId: notification.recipientId.uuid,
 		});
 
 		expect(result.isError()).toBeTruthy();

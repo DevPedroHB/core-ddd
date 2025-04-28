@@ -1,8 +1,8 @@
-import { UniqueEntityId } from "@pedrohb/core-ddd";
+import { UUID } from "@pedrohb/core-ddd";
 import { Address, IAddress } from "../value-objects/address";
 
 export interface IUserAddress extends IAddress {
-	userId: UniqueEntityId;
+	userId: UUID;
 }
 
 export class UserAddress extends Address<IUserAddress> {

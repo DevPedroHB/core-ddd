@@ -35,13 +35,13 @@ describe("Fetch all user notifications", () => {
 		}
 
 		const resultPage1 = await fetchAllUserNotificationsUseCase.execute({
-			recipientId: recipient.id.id,
+			recipientId: recipient.id.uuid,
 			page: 1,
 			perPage: 5,
 		});
 
 		const resultPage2 = await fetchAllUserNotificationsUseCase.execute({
-			recipientId: recipient.id.id,
+			recipientId: recipient.id.uuid,
 			page: 2,
 			perPage: 5,
 		});
@@ -59,7 +59,7 @@ describe("Fetch all user notifications", () => {
 		const notification = await notificationFactory.makeNotification();
 
 		const result = await fetchAllUserNotificationsUseCase.execute({
-			recipientId: notification.recipientId.id,
+			recipientId: notification.recipientId.uuid,
 		});
 
 		expect(result.isError()).toBeTruthy();

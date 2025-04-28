@@ -3,7 +3,7 @@ import {
 	Either,
 	InvalidCredentialsError,
 	ResourceNotFoundError,
-	UniqueEntityId,
+	UUID,
 	UseCase,
 	error,
 	success,
@@ -40,7 +40,7 @@ export class CreateNotificationUseCase
 	}: CreateNotificationUseCaseRequest): Promise<CreateNotificationUseCaseResponse> {
 		try {
 			const contentParsed = JSON.parse(content);
-			const uniqueRecipientId = new UniqueEntityId(recipientId);
+			const uniqueRecipientId = UUID.create(recipientId);
 
 			const recipient = await this.usersRepository.findByFields({
 				id: uniqueRecipientId,

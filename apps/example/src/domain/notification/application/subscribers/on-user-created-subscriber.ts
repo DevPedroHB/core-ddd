@@ -86,7 +86,7 @@ export class OnUserCreatedSubscriber implements EventHandler {
 		await this.createNotificationUseCase.execute({
 			title: `Bem‑vindo(a) à FastFeet, ${user.name}!`,
 			content: JSON.stringify(content),
-			recipientId: user.id.id,
+			recipientId: user.id.uuid,
 		});
 	}
 }

@@ -1,7 +1,6 @@
-import { AggregateRoot, Optional, UniqueEntityId } from "@pedrohb/core-ddd";
+import { AggregateRoot, CPF, Optional, UUID } from "@pedrohb/core-ddd";
 import { UserCreatedEvent } from "../events/user-created-event";
 import { VerifyEmailEvent } from "../events/verify-email-event";
-import { CPF } from "../value-objects/cpf";
 import { UserAddress } from "./user-address";
 
 export enum UserRole {
@@ -23,7 +22,7 @@ export interface IUser {
 	address: UserAddress | null;
 }
 
-export class User extends AggregateRoot<IUser> {
+export class User extends AggregateRoot<IUser, UUID> {
 	get name() {
 		return this.props.name;
 	}
@@ -116,7 +115,7 @@ export class User extends AggregateRoot<IUser> {
 
 	public static create(
 		props: Optional<IUser, "role" | "createdAt" | "address">,
-		id?: UniqueEntityId,
+		id?: UUID,
 	) {
 		const user = new User(
 			{
@@ -125,7 +124,7 @@ export class User extends AggregateRoot<IUser> {
 				createdAt: props.createdAt ?? new Date(),
 				address: props.address ?? null,
 			},
-			id,
+			id ?? UUID.create(UUID.generate()),
 		);
 
 		if (!id && !props.emailVerifiedAt) {

@@ -3,7 +3,7 @@ import {
 	Either,
 	Pagination,
 	ResourceNotFoundError,
-	UniqueEntityId,
+	UUID,
 	UseCase,
 	error,
 	success,
@@ -42,7 +42,7 @@ export class FetchAllUserNotificationsUseCase
 	}: FetchAllUserNotificationsUseCaseRequest): Promise<FetchAllUserNotificationsUseCaseResponse> {
 		try {
 			const recipient = await this.usersRepository.findByFields({
-				id: new UniqueEntityId(recipientId),
+				id: UUID.create(recipientId),
 			});
 
 			if (!recipient) {
@@ -51,7 +51,7 @@ export class FetchAllUserNotificationsUseCase
 
 			const notifications = await this.notificationsRepository.fetchAll({
 				fields: {
-					recipientId: new UniqueEntityId(recipientId),
+					recipientId: UUID.create(recipientId),
 				},
 				orderBy: {
 					createdAt: "desc",

@@ -1,7 +1,4 @@
-import {
-	NotificationFields,
-	NotificationsRepository,
-} from "@/domain/notification/application/repositories/notifications-repository";
+import { NotificationsRepository } from "@/domain/notification/application/repositories/notifications-repository";
 import { Notification } from "@/domain/notification/enterprise/entities/notification";
 import {
 	FetchAllOptions,
@@ -18,7 +15,7 @@ export class InMemoryNotificationsRepository
 	public items: Notification[] = [];
 
 	public async fetchAll(
-		options?: FetchAllOptions<NotificationFields>,
+		options?: FetchAllOptions<Notification>,
 	): Promise<Notification[]> {
 		const { fields, orderBy, pagination } = options || {};
 
@@ -40,7 +37,7 @@ export class InMemoryNotificationsRepository
 	}
 
 	public async findByFields(
-		fields: FindByFields<NotificationFields>,
+		fields: FindByFields<Notification>,
 	): Promise<Notification | null> {
 		const filteredItems = filterItemsByFields(this.items, fields);
 

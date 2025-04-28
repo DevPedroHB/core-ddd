@@ -1,7 +1,4 @@
-import {
-	UserFields,
-	UsersRepository,
-} from "@/domain/account/application/repositories/users-repository";
+import { UsersRepository } from "@/domain/account/application/repositories/users-repository";
 import { User } from "@/domain/account/enterprise/entities/user";
 import {
 	DomainEvents,
@@ -16,9 +13,7 @@ import {
 export class InMemoryUsersRepository implements UsersRepository {
 	public items: User[] = [];
 
-	public async fetchAll(
-		options?: FetchAllOptions<UserFields>,
-	): Promise<User[]> {
+	public async fetchAll(options?: FetchAllOptions<User>): Promise<User[]> {
 		const { fields, orderBy, pagination } = options || {};
 
 		let testAggregateRoot = this.items;
@@ -38,9 +33,7 @@ export class InMemoryUsersRepository implements UsersRepository {
 		return testAggregateRoot;
 	}
 
-	public async findByFields(
-		fields: FindByFields<UserFields>,
-	): Promise<User | null> {
+	public async findByFields(fields: FindByFields<User>): Promise<User | null> {
 		const filteredItems = filterItemsByFields(this.items, fields);
 
 		if (filteredItems.length === 0) {

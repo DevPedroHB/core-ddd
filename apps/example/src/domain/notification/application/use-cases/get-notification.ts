@@ -1,7 +1,7 @@
 import {
 	Either,
 	ResourceNotFoundError,
-	UniqueEntityId,
+	UUID,
 	UseCase,
 	error,
 	success,
@@ -33,7 +33,7 @@ export class GetNotificationUseCase
 	}: GetNotificationUseCaseRequest): Promise<GetNotificationUseCaseResponse> {
 		try {
 			const notification = await this.notificationsRepository.findByFields({
-				id: new UniqueEntityId(id),
+				id: UUID.create(id),
 			});
 
 			if (!notification) {

@@ -1,5 +1,6 @@
 import {
 	AlreadyExistsError,
+	CPF,
 	Either,
 	Hasher,
 	InvalidCredentialsError,
@@ -10,7 +11,6 @@ import {
 } from "@pedrohb/core-ddd";
 import { differenceInYears, isAfter } from "date-fns";
 import { User } from "../../enterprise/entities/user";
-import { CPF } from "../../enterprise/value-objects/cpf";
 import { UsersRepository } from "../repositories/users-repository";
 
 export interface SignUpUseCaseRequest {
@@ -35,7 +35,6 @@ export class SignUpUseCase
 		private readonly usersRepository: UsersRepository,
 		private readonly hasher: Hasher,
 	) {}
-
 	public async execute({
 		name,
 		email,

@@ -2,7 +2,7 @@ import { UsersRepository } from "@/domain/account/application/repositories/users
 import {
 	Either,
 	ResourceNotFoundError,
-	UniqueEntityId,
+	UUID,
 	UseCase,
 	error,
 	success,
@@ -37,7 +37,7 @@ export class ReadNotificationUseCase
 	}: ReadNotificationUseCaseRequest): Promise<ReadNotificationUseCaseResponse> {
 		try {
 			const recipient = await this.usersRepository.findByFields({
-				id: new UniqueEntityId(recipientId),
+				id: UUID.create(recipientId),
 			});
 
 			if (!recipient) {
@@ -45,7 +45,7 @@ export class ReadNotificationUseCase
 			}
 
 			const notification = await this.notificationsRepository.findByFields({
-				id: new UniqueEntityId(id),
+				id: UUID.create(id),
 			});
 
 			if (!notification) {

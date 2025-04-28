@@ -21,7 +21,7 @@ describe("Get notification", () => {
 		const notification = await notificationFactory.makeNotification();
 
 		const result = await getNotificationUseCase.execute({
-			id: notification.id.id,
+			id: notification.id.uuid,
 		});
 
 		expect(result.isSuccess()).toBeTruthy();

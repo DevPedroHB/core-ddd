@@ -1,7 +1,7 @@
-import { DomainEvent, UniqueEntityId } from "@pedrohb/core-ddd";
+import { DomainEvent, UUID } from "@pedrohb/core-ddd";
 import { User } from "../entities/user";
 
-export class VerifyEmailEvent implements DomainEvent {
+export class VerifyEmailEvent implements DomainEvent<UUID> {
 	public occurredAt: Date;
 	private user: User;
 
@@ -10,7 +10,7 @@ export class VerifyEmailEvent implements DomainEvent {
 		this.user = user;
 	}
 
-	public getAggregateId(): UniqueEntityId {
+	public getAggregateId() {
 		return this.user.id;
 	}
 }

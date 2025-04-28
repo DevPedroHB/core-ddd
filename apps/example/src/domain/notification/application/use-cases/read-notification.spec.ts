@@ -32,8 +32,8 @@ describe("Read notification", () => {
 		});
 
 		const result = await readNotificationUseCase.execute({
-			id: notification.id.id,
-			recipientId: notification.recipientId.id,
+			id: notification.id.uuid,
+			recipientId: notification.recipientId.uuid,
 		});
 
 		const notificationOnDatabase = inMemoryNotificationsRepository.items[0];
@@ -46,8 +46,8 @@ describe("Read notification", () => {
 		const notification = await notificationFactory.makeNotification();
 
 		const result = await readNotificationUseCase.execute({
-			id: notification.id.id,
-			recipientId: notification.recipientId.id,
+			id: notification.id.uuid,
+			recipientId: notification.recipientId.uuid,
 		});
 
 		expect(result.isError()).toBeTruthy();

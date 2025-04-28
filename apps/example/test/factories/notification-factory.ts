@@ -5,11 +5,11 @@ import {
 } from "@/domain/notification/enterprise/entities/notification";
 import { fakerPT_BR as faker } from "@faker-js/faker";
 import { Injectable } from "@nestjs/common";
-import { UniqueEntityId } from "@pedrohb/core-ddd";
+import { UUID } from "@pedrohb/core-ddd";
 
 export function makeNotification(
 	props: Partial<INotification> = {},
-	id?: UniqueEntityId,
+	id?: UUID,
 ) {
 	const content = [
 		{
@@ -26,7 +26,7 @@ export function makeNotification(
 		{
 			title: faker.lorem.sentence(),
 			content: JSON.stringify(content),
-			recipientId: new UniqueEntityId(),
+			recipientId: UUID.create(UUID.generate()),
 			...props,
 		},
 		id,
@@ -41,10 +41,7 @@ export class NotificationFactory {
 		private readonly notificationsRepository: NotificationsRepository,
 	) {}
 
-	public async makeNotification(
-		props: Partial<INotification> = {},
-		id?: UniqueEntityId,
-	) {
+	public async makeNotification(props: Partial<INotification> = {}, id?: UUID) {
 		const notification = makeNotification(props, id);
 
 		await this.notificationsRepository.create(notification);
