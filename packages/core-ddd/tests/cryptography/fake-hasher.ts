@@ -1,4 +1,4 @@
-import { Hasher } from "@/cryptography/hasher";
+import type { Hasher } from "@/cryptography/hasher";
 
 export class FakeHasher implements Hasher {
 	public static readonly hashString = "-hashed";

@@ -1,4 +1,4 @@
-import { UUID } from "@/entities/entity-ids/uuid";
+import type { UUID } from "@/entities/entity-ids/uuid";
 import { fakerPT_BR as faker } from "@faker-js/faker";
 import {
 	type ITestAggregateRoot,

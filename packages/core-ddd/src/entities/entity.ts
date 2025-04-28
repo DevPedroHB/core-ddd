@@ -1,4 +1,4 @@
-import { EntityId } from "@/interfaces/entity-id";
+import type { EntityId } from "@/interfaces/entity-id";
 
 /**
  * Classe abstrata genérica que representa uma entidade de domínio com um identificador único.
@@ -13,9 +13,8 @@ export abstract class Entity<T, ID extends EntityId<ID>> {
 	public readonly id: ID;
 	/**
 	 * Propriedades internas da entidade.
-	 * Protegido para uso apenas em subclasses.
 	 */
-	protected readonly props: T;
+	public readonly props: T;
 
 	/**
 	 * Construtor protegido para inicialização das propriedades e do identificador.

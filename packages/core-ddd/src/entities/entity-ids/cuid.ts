@@ -1,5 +1,5 @@
 import { InvalidCredentialsError } from "@/errors/invalid-credentials-error";
-import { EntityId } from "@/interfaces/entity-id";
+import type { EntityId } from "@/interfaces/entity-id";
 import { createId, isCuid } from "@paralleldrive/cuid2";
 
 /**

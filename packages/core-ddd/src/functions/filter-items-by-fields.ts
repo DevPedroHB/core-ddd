@@ -1,3 +1,5 @@
+import type { Entity } from "@/entities/entity";
+import type { EntityId } from "@/interfaces/entity-id";
 import type { FindByFields } from "@/types/find-by-fields";
 
 /**
@@ -9,7 +11,10 @@ import type { FindByFields } from "@/types/find-by-fields";
  * @param {FindByFields<T>} fields - Objeto com os campos e valores para filtrar os itens.
  * @returns {E[]} Array filtrado de itens que correspondem a todos os campos especificados.
  */
-export function filterItemsByFields<E, T>(items: E[], fields: FindByFields<T>) {
+export function filterItemsByFields<
+	E,
+	T extends Entity<unknown, EntityId<unknown>>,
+>(items: E[], fields: FindByFields<T>) {
 	if (!fields || Object.keys(fields).length === 0) {
 		return items;
 	}

@@ -1,6 +1,6 @@
 import type { AggregateRoot } from "@/entities/aggregate-root";
 import type { DomainEvent } from "@/interfaces/domain-event";
-import { EntityId } from "@/interfaces/entity-id";
+import type { EntityId } from "@/interfaces/entity-id";
 
 /**
  * Tipo para a função callback que lida com um evento de domínio.

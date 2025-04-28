@@ -1,6 +1,6 @@
 import { DomainEvents } from "@/events/domain-events";
 import type { DomainEvent } from "@/interfaces/domain-event";
-import { EntityId } from "@/interfaces/entity-id";
+import type { EntityId } from "@/interfaces/entity-id";
 import { Entity } from "./entity";
 
 /**

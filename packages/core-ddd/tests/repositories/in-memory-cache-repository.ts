@@ -1,4 +1,4 @@
-import { CacheRepository } from "@/repositories/cache-repository";
+import type { CacheRepository } from "@/repositories/cache-repository";
 
 export class InMemoryCacheRepository implements CacheRepository {
 	public items: Map<string, string> = new Map();

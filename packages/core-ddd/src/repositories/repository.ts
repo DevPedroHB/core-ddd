@@ -1,46 +1,47 @@
+import type { Entity } from "@/entities/entity";
+import type { EntityId } from "@/interfaces/entity-id";
 import type { FetchAllOptions } from "@/types/fetch-all-options";
 import type { FindByFields } from "@/types/find-by-fields";
 
 /**
- * Classe abstrata que define a interface de um repositório para gerenciar entidades.
+ * Repositório genérico para entidades, definindo operações de leitura, criação, atualização e remoção.
  *
- * @template F - Tipo dos filtros ou opções para buscas.
- * @template E - Tipo da entidade gerenciada pelo repositório.
+ * @template E - Tipo de entidade que estende Entity<P, EntityId>.
  */
-export abstract class Repository<F, E> {
+export abstract class Repository<E extends Entity<unknown, EntityId<unknown>>> {
 	/**
-	 * Busca todas as entidades, opcionalmente utilizando filtros e opções de paginação.
+	 * Busca todas as entidades que atendem às opções fornecidas.
 	 *
-	 * @param {FetchAllOptions<F>} [options] - Opções para a busca, tais como filtros, ordenação e paginação.
-	 * @returns {Promise<E[]>} Uma promessa que resolve com um array de entidades.
+	 * @param {FetchAllOptions<E>} [options] - Opções de filtragem, ordenação e paginação.
+	 * @returns {Promise<E[]>} Promessa que resolve para um array de entidades.
 	 */
-	public abstract fetchAll(options?: FetchAllOptions<F>): Promise<E[]>;
+	public abstract fetchAll(options?: FetchAllOptions<E>): Promise<E[]>;
 	/**
-	 * Busca uma entidade que corresponda aos campos fornecidos.
+	 * Encontra uma entidade que corresponda aos campos fornecidos.
 	 *
-	 * @param {FindByFields<F>} fields - Objeto contendo os campos e valores para filtrar a entidade.
-	 * @returns {Promise<E | null>} Uma promessa que resolve com a entidade encontrada ou null se nenhuma for encontrada.
+	 * @param {FindByFields<E>} fields - Campos para busca.
+	 * @returns {Promise<E | null>} Promessa que resolve para a entidade encontrada ou null.
 	 */
-	public abstract findByFields(fields: FindByFields<F>): Promise<E | null>;
+	public abstract findByFields(fields: FindByFields<E>): Promise<E | null>;
 	/**
-	 * Cria uma nova entidade no repositório.
+	 * Persiste uma nova entidade no repositório.
 	 *
-	 * @param {E} entity - A entidade a ser criada.
-	 * @returns {Promise<void>} Uma promessa que indica a conclusão da operação.
+	 * @param {E} entity - Entidade a ser criada.
+	 * @returns {Promise<void>} Promessa que resolve quando a operação for concluída.
 	 */
 	public abstract create(entity: E): Promise<void>;
 	/**
 	 * Atualiza uma entidade existente no repositório.
 	 *
-	 * @param {E} entity - A entidade a ser atualizada.
-	 * @returns {Promise<void>} Uma promessa que indica a conclusão da operação.
+	 * @param {E} entity - Entidade com dados atualizados.
+	 * @returns {Promise<void>} Promessa que resolve quando a operação for concluída.
 	 */
 	public abstract update(entity: E): Promise<void>;
 	/**
 	 * Remove uma entidade do repositório.
 	 *
-	 * @param {E} entity - A entidade a ser removida.
-	 * @returns {Promise<void>} Uma promessa que indica a conclusão da operação.
+	 * @param {E} entity - Entidade a ser removida.
+	 * @returns {Promise<void>} Promessa que resolve quando a operação for concluída.
 	 */
 	public abstract delete(entity: E): Promise<void>;
 }

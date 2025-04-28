@@ -1,7 +1,7 @@
 import { InvalidCredentialsError } from "@/errors/invalid-credentials-error";
-import { EntityId } from "@/interfaces/entity-id";
+import type { EntityId } from "@/interfaces/entity-id";
 import {
-	PRNG,
+	type PRNG,
 	decodeTime,
 	encodeTime,
 	fixULIDBase32,
