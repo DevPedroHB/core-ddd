@@ -11,7 +11,7 @@
 	"dependencies": {
 		"@paralleldrive/cuid2": "^2.2.2",
 		"ulid": "^3.0.0",
-		"uuid": "^11.1.0"
+		"uuid": "^14.0.0"
 	},
 	"description": "O Core DDD é uma biblioteca para criar Domain Driven Design em TypeScript.",
 	"devDependencies": {
